@@ -23,6 +23,9 @@ Implementation Notes
 * Adafruit CircuitPython firmware for the supported boards:
   https://circuitpython.org/downloads
 
+* CircuitPython asyncio module:
+  https://github.com/adafruit/Adafruit_CircuitPython_asyncio
+
 """
 try:
     from typing import Optional, Union, Tuple, Sequence, List
