@@ -3,25 +3,24 @@
 #
 # SPDX-License-Identifier: Unlicense
 import asyncio
-
+import board
 import pwmio
 
 from async_buzzer import Buzzer
-import board
 
 tune = [
-    ("E5",500),
-    ("G5",500),
-    ("A5",1000),
-    ("E5",500),
-    ("G5",500),
-    ("B5",250),
-    ("A5",750),
-    ("E5",500),
-    ("G5",500),
-    ("A5",1000),
-    ("G5",500),
-    ("E5",1500)
+    ("E5", 500),
+    ("G5", 500),
+    ("A5", 1000),
+    ("E5", 500),
+    ("G5", 500),
+    ("B5", 250),
+    ("A5", 750),
+    ("E5", 500),
+    ("G5", 500),
+    ("A5", 1000),
+    ("G5", 500),
+    ("E5", 1500),
 ]
 
 pwm = pwmio.PWMOut(board.D10, variable_frequency=True)
@@ -34,5 +33,6 @@ async def main():
         print(i)
         await asyncio.sleep(1)
     await buzzer.wait()
+
 
 asyncio.run(main())
