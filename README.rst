@@ -31,17 +31,8 @@ This driver depends on:
 
 * `Adafruit CircuitPython <https://github.com/adafruit/circuitpython>`_
 
-Please ensure all dependencies are available on the CircuitPython filesystem.
-This is easily achieved by downloading
-`the Adafruit library and driver bundle <https://circuitpython.org/libraries>`_
-or individual libraries can be installed using
-`circup <https://github.com/adafruit/circup>`_.Installing from PyPI
+Installing from PyPI
 =====================
-.. note:: This library is not available on PyPI yet. Install documentation is included
-   as a standard element. Stay tuned for PyPI availability!
-
-.. todo:: Remove the above note if PyPI version is/will be available at time of release.
-
 On supported GNU/Linux systems like the Raspberry Pi, you can install the driver locally `from
 PyPI <https://pypi.org/project/circuitpython-async-buzzer/>`_.
 To install for current user:
@@ -91,8 +82,42 @@ Or the following command to update an existing version:
 Usage Example
 =============
 
-.. todo:: Add a quick, simple example. It and other examples should live in the
-examples folder and be included in docs/examples.rst.
+.. code-block:: python
+
+    import asyncio
+
+    import pwmio
+
+    from async_buzzer import Buzzer
+    import board
+
+    tune = [
+        ("E5",500),
+        ("G5",500),
+        ("A5",1000),
+        ("E5",500),
+        ("G5",500),
+        ("B5",250),
+        ("A5",750),
+        ("E5",500),
+        ("G5",500),
+        ("A5",1000),
+        ("G5",500),
+        ("E5",1500)
+    ]
+
+    pwm = pwmio.PWMOut(board.D10, variable_frequency=True)
+    buzzer = Buzzer(pwm)
+
+
+    async def main():
+        buzzer.play(tune, wait=False)
+        for i in range(5):
+            print(i)
+            await asyncio.sleep(1)
+        await buzzer.wait()
+
+    asyncio.run(main())
 
 Documentation
 =============

@@ -22,11 +22,7 @@ extensions = [
     "sphinx.ext.todo",
 ]
 
-# TODO: Please Read!
-# Uncomment the below if you use native CircuitPython modules such as
-# digitalio, micropython and busio. List the modules you use. Without it, the
-# autodoc module docs will fail to generate with a warning.
-# autodoc_mock_imports = ["digitalio", "busio"]
+autodoc_mock_imports = ["digitalio", "busio", "pwmio"]
 
 autodoc_preserve_defaults = True
 
@@ -191,7 +187,7 @@ texinfo_documents = [
         "CircuitPython async_buzzer Library Documentation",
         author,
         "CircuitPython_async_buzzer_Library",
-        "One line description of project.",
+        "OPlay simple tunes on a piezo buzzer asynchronously",
         "Miscellaneous",
     ),
 ]
